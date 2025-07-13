@@ -1,4 +1,5 @@
-public class Recursion {
+//public class Recursion {
+    //easy level
     //no from 5 to 1
    /**  public static void main(String[] args) {
         int n=5;
@@ -142,7 +143,7 @@ public class Recursion {
   
   }*/
     
-
+//mid level
 //Tower of Hanoi
 /*public static void main(String[] args) {
     int n=3;
@@ -252,7 +253,7 @@ public static void rearrange(StringBuilder sb, char val,int idx){
  }*/
 
  // another try for the above prog
- public static void main(String[] args) {
+ /*public static void main(String[] args) {
     String str="xxabxxcd";
     int count=0;
     String newstr="";
@@ -274,9 +275,158 @@ public static void rearrange(StringBuilder sb, char val,int idx){
         newstr+=str.charAt(idx);
         rearr(str, count, idx+1, newstr);
     }
- }
+ }*/
 
- 
+ //Program to remove duplicates if aabccda exists then u should display abcd 
+/*public static void main(String[] args) {
+    String str="aaabcbcbdabe";
+    
+remove(0,str,"");
+
 }
+public static void remove(int idx, String str, String newstr){
+if(idx==str.length()){
+    System.out.println(newstr);
+    return;
+}
+for(int i=idx;i<str.length();i++){
+   char comp= str.charAt(i);
+   int count=0;
+   if(newstr.length()==0){
+    newstr+=comp;
+     remove(idx+1,str,newstr);
+     return;
+   }
+   else{
+   for(int j=0;j<newstr.length();j++){
+    if(newstr.charAt(j)!=comp){
+        count=count+1;
+    }
+    else{
+         remove(idx+1,str,newstr);
+         return;
+    }
+   }
+   if(count==newstr.length()){
+    newstr= newstr+comp;
+    remove(idx+1,str,newstr);
+    return;
+   }
+}
+}
+}*/
+
+//other approach
+/*public static void main(String[] args) {
+    boolean arr[]= new boolean[26];
+    String str="bbaaccdea";
+    remove(arr,str,"",0);
+}
+public static void remove(boolean arr[],String str,String newstr,int idx){
+   
+if(idx==str.length()){
+    System.out.println(newstr);
+    return;
+}
+
+char currchar=str.charAt(idx);
+if(arr[currchar-'a']==false){
+    newstr+=currchar;
+    arr[currchar-'a']=true;
+    remove(arr, str, newstr, idx+1);
+    
+}
+else{
+  remove(arr, str, newstr, idx+1);
+  
+}
+}*/
+
+//print all subsequences of a string "abc"
+/*public static String newstr1="";
+public static void main(String[] args) {
+    String str="abc";
+    sub(str,0,"");
+
+}
+public static void sub(String str,int idx,String newstr){
+    if(idx==str.length()){
+        return;
+    }
+    char character=str.charAt(idx);
+   newstr1=newstr+character;
+   System.out.println(newstr1);
+   sub(str, idx+1, newstr1);
+   sub(str,idx+1,newstr);
+
+}
+}*/
+
+//other approach
+
+/*public class Trial{
+    public static void main(String[] args) {
+        String str="abc";
+        comb(str,"",0);
+    }
+    public static void comb(String str,String newstr,int idx){
+        if(idx==str.length()){
+            System.out.println(newstr);
+            return;
+        }
+        char currchar=str.charAt(idx);
+        comb(str,newstr+currchar,idx+1);
+        comb(str, newstr, idx+1);
+
+    }
+}*/
+
+//Using hashset for the string aaa to only print a,aa,aaa only once using the above code
+/*import java.util.*;
+public class Recursion{
+    public static void main(String[] args) {
+        String str="aaa";
+        HashSet<String>set=new HashSet<>();
+        comb(str,"",0,set);
+    }
+    public static void comb(String str,String newstr,int idx,HashSet<String>set){
+        if(idx==str.length()){
+            if(set.contains(newstr)){
+                return;
+            }
+            else{
+            System.out.println(newstr);
+            set.add(newstr);
+            return;
+            }
+        }
+        char currchar=str.charAt(idx);
+        comb(str,newstr+currchar,idx+1,set);
+        comb(str, newstr, idx+1,set);
+
+    }
+}*/
+
+//Keypad Combination
+public class Recursion{
+    public static String keypad[]={".","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+    public static void main(String[] args){
+        String str="23";
+        comb(str,0,"");
+    }
+    public static void comb(String str, int idx,String combination){
+    if(idx==str.length()){
+        System.out.println(combination);
+        return;
+    }
+    char currchar=str.charAt(idx);
+    String mapping=keypad[currchar-'0'];
+    for(int i=0;i<mapping.length();i++){
+        comb(str, idx+1, combination+mapping.charAt(i));
+    }
+    }
+}
+
+
 
 

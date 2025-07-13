@@ -85,7 +85,7 @@ public class T{
 }**/
 
 //Palindrome
-/**import java.util.*;
+import java.util.*;
 public class T{
     public static void isPalindrome(int a){
         int num=a;
@@ -107,7 +107,7 @@ public class T{
         int a= sc.nextInt();
         isPalindrome(a);
     }
-}**/
+}
 
 //Fibonacci series
 /**import java.util.*;
